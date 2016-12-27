@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js面向对象</title>
+    <script type="text/javascript">
+
+        function validate_required(field,alerttxt)
+        {
+            with (field)
+            {
+                if (value==null||value=="")
+                {alert(alerttxt);return false}
+                else {return true}
+            }
+        }
+
+        function validate_form(thisform)
+        {
+            with (thisform)
+            {
+                if (validate_required(email,"Email must be filled out!")==false)
+                {email.focus();return false}
+            }
+        }
+
+        function validate_email(field,alerttxt)
+        {
+            with (field)
+            {
+                apos=value.indexOf("@")
+                dotpos=value.lastIndexOf(".")
+                if (apos<1||dotpos-apos<2)
+                {alert(alerttxt);return false}
+                else {return true}
+            }
+        }
+
+        function validate_form1(thisform)
+        {
+            with (thisform)
+            {
+                if (validate_email(email,"Not a valid e-mail address!")==false)
+                {email.focus();return false}
+            }
+        }
+
+        function toUpperCase(){
+            var x=document.getElementById("email");
+            x.value=x.value.toUpperCase();
+        }
+
+
+    </script>
+</head>
+
+<body>
+<form action="submitpage.htm" onsubmit="return validate_form(this)" method="post">
+    Email: <input type="text" name="email" size="30">
+    <input type="submit" value="Submit">
+</form>
+
+<form action="#"onsubmit="return validate_form1(this);" method="post">
+    Email: <input type="text" name="email" size="30" id="email" onchange="toUpperCase()">
+    <input type="submit" value="Submit">
+</form>
+
+
+<script>
+    document.getElementsByName("email")[0].style.color="blue";
+</script>
+
+</body>
+</html>

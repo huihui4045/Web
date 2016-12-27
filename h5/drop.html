@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <style type="text/css">
+        #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script>
+        function allowDrop(ev)
+        {
+            ev.preventDefault();
+        }
+
+        function drag(ev)
+        {
+            ev.dataTransfer.setData("Text",ev.target.id);
+        }
+
+        function drop(ev)
+        {
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+
+<p>拖动 W3CSchool.cc 图片到矩形框中:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="../images/logo.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69" style="display: block">
+
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    您的浏览器不支持Video标签。
+</video>
+
+
+<audio controls>
+    <source src="horse.ogg" type="audio/ogg">
+    <source src="horse.mp3" type="audio/mpeg">
+    您的浏览器不支持 audio 元素。
+</audio>
+
+
+<script>
+    person=new Object();
+    person.firstname="Bill";
+    person.lastname="Gates";
+    person.age=56;
+    person.eyecolor="blue";
+    document.write(person.firstname + " is " + person.age + " years old.");
+</script>
+
+
+</body>
+</html>
