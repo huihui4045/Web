@@ -13,11 +13,53 @@
     $(document).ready(function(){
         $("p").click(function(){
             $(this).hide();
+
+
         });
     });
+
+    function loadPage() {
+
+        alert("sssssssssssss");
+
+        $.ajax({
+            async: false,
+            type:"get",
+            crossDomain: true,
+            url: "http://v.juhe.cn/toutiao/index",
+            contentType: 'application/json',
+
+            data: { 'type': 'top', 'key':'3609d6ccba7c6b3cc660fdbbf9d2564e'},
+
+
+            success: function (data) {
+
+                $('#div1').html(data);
+            },
+
+            error: function(error){
+
+                alert("输出错误"+error.toString());
+            }
+
+        });
+    }
+
+
+
+
+
+
 </script>
 
 <p>If you click on me, I will disappear.</p>
+
+<input type="button" onclick="loadPage();" value="加载" />
+
+
+<div id="div1"></div>
+
+
 
 </body>
 </html>
